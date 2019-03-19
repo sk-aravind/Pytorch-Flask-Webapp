@@ -55,9 +55,13 @@ def make_prediction():
 
         output = output.numpy().ravel()
         labels = meth_agn_v2(output,0.5)
-        
-        label_array = [ cat_to_name[str(i)] for i in labels]
-        label = ", ".join(label_array )
+
+        if len(labels) == 0 :
+            label = " There are no pascal voc categories in this picture "
+        else :
+            label_array = [ cat_to_name[str(i)] for i in labels]
+
+            label = "Predictions: " + ", ".join(label_array )
         
         # label = cat_to_name[str(new.argmax())]
         
