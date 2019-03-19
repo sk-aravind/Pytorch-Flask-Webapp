@@ -12,25 +12,27 @@
 </head>
 
 <body>
+
 	<div class="container">
+
 		<h1 class="display-4 margins margin-head">Upload an image to make a prediction</h1>
+
 		<form action="/predict" method="post" enctype="multipart/form-data" id="upload-file" class="container">
 			<input class="margins-top btn btn-warning btn-lg" type="file" name="image" value="Upload" id="imageUpload" accept=".png, .jpg, .jpeg">
 			<img class="margins-top" id="imgpreview" src="#"/>
 			<input  style="display:none;" type="submit" id="btn-predict" class="btn btn-primary btn-lg margins-top" value="Predict">
 		</form>
-	
 
 		<h3 class="margins-top display-4 prediction-text">
-		{% if label %} {{ label }} {% endif %}
+			{% if label %} {{ label }} {% endif %}
 		</h3>
 
 		<button type="button" id="btn-show-val" class=" margins btn btn-success btn-lg">Show Validation Results</button>
 		<button type="button" id="btn-hide-val" class=" margins btn btn-secondary btn-lg" style="display:none;">Hide Validation Results</button>
 	
 	</div>
+
 	<div id ="table-container" class="margins-table">
-	
 		<div id="DirectEditPreserve" class="wow fadeInUp databaseTable_holder 122860">
 			<div id="DirectEditPreserve" class="databaseTable_heading">
 				<div id="DirectEditPreserve" class="databaseTable_title display-4">Validation Results</div>
@@ -43,10 +45,7 @@
 				<div id="DirectEditPreserve" class="databaseTable_UI_scrollRight databaseTable_UI_button" style="display: none;"><!-- JS shows/hides by appending the .hidden class --></div>
 			</div>
 		</div>
-		</div>
-
-
-
+	</div>
 
 </body>
 

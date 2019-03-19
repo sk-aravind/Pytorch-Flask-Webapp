@@ -54,21 +54,17 @@ def make_prediction():
         output = model(image)
 
         output = output.numpy().ravel()
-        labels = meth_agn_v2(output,0.5)
+        labels = thresh_sort(output,0.5)
 
         if len(labels) == 0 :
             label = " There are no pascal voc categories in this picture "
         else :
             label_array = [ cat_to_name[str(i)] for i in labels]
-
             label = "Predictions: " + ", ".join(label_array )
         
-        # label = cat_to_name[str(new.argmax())]
-        
-
         return render_template('index.html', label=label)
 
-def meth_agn_v2(x, thresh):
+def thresh_sort(x, thresh):
     idx, = np.where(x > thresh)
     return idx[np.argsort(x[idx])]
 
