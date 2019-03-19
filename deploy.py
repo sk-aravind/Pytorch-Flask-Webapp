@@ -57,7 +57,7 @@ def make_prediction():
         labels = meth_agn_v2(output,0.5)
         
         label_array = [ cat_to_name[str(i)] for i in labels]
-        label = ",".join(label_array )
+        label = ", ".join(label_array )
         
         # label = cat_to_name[str(new.argmax())]
         

@@ -2,18 +2,35 @@
   justify-content: center;
   align-items: center;
   align-content: center;
+	flex-direction: column ;
+	display: flex;
+}
+
+.container-form {
+
+	/* flex-direction: column ;
+	display: flex; */
 }
 
 .margins{
   margin:20px;
 }
 
+.margin-head{
+	margin:160px 0px 20px 0px;
+	font-size: 2.9em;
+}
+
+.margins-top{
+  margin:20px 0px 20px 0px;
+}
+
 /* tables */
 @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300,700|Source+Sans+Pro:100,300,400,600,700,300italic,400italic,600italic,700italic");
-$heading_font: 'Roboto Condensed';
+/* $heading_font: 'Roboto Condensed'; */
 .databaseTable_holder {
-  //border-radius: 4px;
+  /* border-radius: 4px; */
   overflow: hidden;
   margin: 3rem auto 3rem auto;
   display: table;
@@ -27,12 +44,12 @@ div[class*="databaseTable_import_wrap"] {
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none;
 	border: 1px solid #ccc;
-  //border-radius: 0 0 4px 4px;
+  /* border-radius: 0 0 4px 4px; */
 	border-top: none;
 }
 .databaseTable {
 		position: relative;
-		//border-radius: 4px;
+		/* border-radius: 4px; */
 }
 .databaseTable_import_wrap div img {
 	padding: 40px;

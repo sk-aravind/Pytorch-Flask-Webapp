@@ -2,6 +2,7 @@ $(document).ready(function () {
   
   $('#btn-predict').hide();
   $('#imgpreview').hide();
+  $('#table-container').hide();
 
   // Upload Preview
   function readURL(input) {
@@ -28,11 +29,28 @@ $(document).ready(function () {
    
   });
 
+  // Show
+  $('#btn-show-val').click(function () {
+    // Show loading animation
+    $(this).hide();
+		$('#table-container').show();
+		$('#btn-hide-val').show();
+ 
+});
+
+// Show
+$('#btn-hide-val').click(function () {
+  // Show loading animation
+  $(this).hide();
+  $('#table-container').hide();
+  $('#btn-show-val').show();
 
 });
 
 
-/********************* Custom controls script: by Josh *******************/
+});
+
+
 
 // Control Variables
 var scrollTo_122860;
