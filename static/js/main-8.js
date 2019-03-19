@@ -223,7 +223,14 @@ var firstAvailCol;if(typeof(matrix[rowIndex])=="undefined"){matrix[rowIndex]=[];
 							(printedLines % 2) ? oddOrEven = 'odd' : oddOrEven = 'even';
 							tableHTML += '<tr class="' + options.trClass + ' ' + oddOrEven + '">';
 							$.each(items, function(itemCount, item) {
-								tableHTML += '<td class="' + options.tdClass + '">' + item + '</td>';
+								if (itemCount == 0){
+									// =================================
+									// Insert Picture here 
+									// =================================
+									tableHTML += '<td class="' + options.tdClass + '">' + '<a href="https://placeholder.com"><img src="https://via.placeholder.com/150"></img></a>' + '</td>';
+								} else {
+									tableHTML += '<td class="' + options.tdClass + '">' + item + '</td>';
+								}
 							});
 							tableHTML += '</tr>';
 						}
@@ -252,6 +259,7 @@ var firstAvailCol;if(typeof(matrix[rowIndex])=="undefined"){matrix[rowIndex]=[];
 /*********** Table search script: filtertable.min.js ***********/
 
 /**
+ * '<a href="https://placeholder.com"><img src="https://via.placeholder.com/150"></img></a>'
  * jquery.filterTable
  *
  * This plugin will add a search filter to tables. When typing in the filter,
