@@ -227,7 +227,7 @@ var firstAvailCol;if(typeof(matrix[rowIndex])=="undefined"){matrix[rowIndex]=[];
 									// =================================
 									// Insert Picture here 
 									// =================================
-									tableHTML += '<td class="' + options.tdClass + '">' + '<a href="https://placeholder.com"><img src="https://via.placeholder.com/150"></img></a>' + '</td>';
+									tableHTML += '<td class="' + options.tdClass + '">' + '<a href="http://placekitten.com/g/300/200"><img src="http://placekitten.com/g/300/200"></img></a>' + '</td>';
 								} else {
 									tableHTML += '<td class="' + options.tdClass + '">' + item + '</td>';
 								}
