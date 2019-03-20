@@ -58,6 +58,10 @@ def make_prediction():
 
         if len(labels) == 0 :
             label = " There are no pascal voc categories in this picture "
+            # category = cat_to_name[str(np.argmax(output))]
+            # label = " There doesnt seem to be any pascal voc categories in this picture, but if I had to guess it looks like a " + category
+
+
         else :
             label_array = [ cat_to_name[str(i)] for i in labels]
             label = "Predictions: " + ", ".join(label_array )
