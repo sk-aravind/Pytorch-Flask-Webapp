@@ -8,7 +8,7 @@ def clip_dec(x):
     return float("{0:.3f}".format(x))
 
 
-df = pd.read_csv('scores_with_gt.csv')
+df = pd.read_csv('scores_wth_gt-1.csv')
 frames = []
 
 object_categories = ['aeroplane', 'bicycle', 'bird', 'boat',
@@ -27,4 +27,4 @@ result_df['image'] = result_df['image'].apply(replace_x)
 for cat in object_categories:
     result_df[cat] = result_df[cat].apply(clip_dec)
 
-result_df.to_csv("results-20-combined-4.csv", index = False)
+result_df.to_csv("results-20-combined-5.csv", index = False)
