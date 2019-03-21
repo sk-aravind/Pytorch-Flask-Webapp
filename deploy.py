@@ -15,28 +15,6 @@ app = Flask(__name__)
 def index():
     return flask.render_template('index.html')
 
-def prepare_image(image, target_size):
-    """Do image preprocessing before prediction on any data.
-    :param image:       original image
-    :param target_size: target image size
-    :return:
-                        preprocessed image
-    """
-
-    if image.mode != 'RGB':
-        image = image.convert("RGB")
-
-    # Resize the input image nad preprocess it.
-    image = transforms.Resize(target_size)(image)
-    image = transforms.ToTensor()(image)
-
-    # Convert to Torch.Tensor and normalize.
-    image = transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])(image)
-
-    # Add batch_size axis.
-    image = image[None]
-    
-    return torch.autograd.Variable(image, volatile=True)
 
 @app.route('/predict', methods=['POST'])
 def make_prediction():
@@ -47,11 +25,24 @@ def make_prediction():
         if not file:
             return render_template('index.html', label="No file uploaded")
 
-        image = flask.request.files["image"].read()
-        image = Image.open(io.BytesIO(image))
-        image = prepare_image(image, target_size=(224, 224))
 
-        output = model(image)
+        img = Image.open(file)
+        img = transforms.functional.resize(img, 250)
+        img = transforms.functional.five_crop(img, 224)
+
+        f = lambda crops: torch.stack([transforms.ToTensor()(crop) for crop in img])
+        feature = f(img)
+
+        k = lambda norm: torch.stack([transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])(crop) for crop in feature])
+        features = k(feature)
+        
+        # feed through network
+        output = model(features)
+        # take average of five crops
+        output = output.mean(0)
+
+
+        # output = model(image)
 
         output = output.numpy().ravel()
         labels = thresh_sort(output,0.5)
